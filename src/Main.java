@@ -10,7 +10,7 @@ public class Main {
         while (numMenu != 3) {
             if (numMenu == 1) {
                 System.out.println("Введи пример");
-                result = calculations.InsertVars();
+                result = calculations.insertVars();
                 System.out.println(result);
             }
             if (numMenu == 2) {
