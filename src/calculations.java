@@ -1,13 +1,56 @@
-import com.sun.org.apache.xpath.internal.objects.XString;
-
-import java.security.SecureRandom;
-import java.util.Scanner;
-
 public class calculations {
-    public static String insertVars() {
-        Scanner scr = new Scanner(System.in);
-        String txt = "";
-        txt = scr.nextLine();
+
+    public static String insertVars(String txt) {
+        String resultVars = "0";
+        int calcVars = 0;
+        String[] vals = txt.split(" ");
+        int var1 = Integer.parseInt(vals[0].trim());
+        String action = vals[1];
+        int var2;
+        //int var2 = Integer.parseInt(vals[2].trim());
+        switch (action) {
+            case "+":
+                var2= Integer.parseInt(vals[2].trim());
+                calcVars = var1 + var2;
+                resultVars = "\"+\" - " + txt + " = " + Integer.toString(calcVars);
+                break;
+            case "-":
+                var2= Integer.parseInt(vals[2].trim());
+                calcVars = var1 - var2;
+                resultVars = "\"-\" - " + txt + " = " + Integer.toString(calcVars);
+                break;
+            case "*":
+                var2= Integer.parseInt(vals[2].trim());
+                calcVars = var1 * var2;
+                resultVars = "\"*\" - " + txt + " = " + Integer.toString(calcVars);
+                break;
+            case "/":
+                var2= Integer.parseInt(vals[2].trim());
+                calcVars = var1 / var2;
+                resultVars = "\"/\" - " + txt + " = " + Integer.toString(calcVars);
+                break;
+            case "!":
+                calcVars = getFactorial(var1);
+                resultVars = "\"!\" - " + var1 + action + " = "+ factorial(var1) + " = "+ Integer.toString(calcVars);
+                break;
+            case "^":
+                var2= Integer.parseInt(vals[2].trim());
+                calcVars = degree(var1,var2);
+                resultVars = "\"^\" - " + txt + " = " + Integer.toString(calcVars);
+                break;
+            case "?":
+                var2= Integer.parseInt(vals[2].trim());
+                String calcVarscomparison ="";
+                calcVarscomparison = comparison(var1,var2);
+                resultVars = "\"?\" - " + txt + " = " + calcVarscomparison;
+                break;
+            default:
+                System.out.println("вСЕ НЕТО");
+                break;
+        }
+        return resultVars;
+    }
+    public static int insertVarsInt(String txt) {
         String resultVars = "0";
         int calcVars = 0;
         String[] vals = txt.split(" ");
@@ -55,7 +98,7 @@ public class calculations {
                 System.out.println("вСЕ НЕТО");
                 break;
         }
-        return resultVars;
+        return calcVars;
     }
     public static int getFactorial (int var1) {
         if (var1 <=1){

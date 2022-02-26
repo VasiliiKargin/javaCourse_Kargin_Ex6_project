@@ -6,4 +6,10 @@ public class Scr {
         int numMenu = scr.nextInt();
         return numMenu;
     }
+    public static String scrInsertValue(){
+        Scanner scr = new Scanner(System.in);
+        String txt = "";
+        txt = scr.nextLine();
+        return txt;
+    }
 }
